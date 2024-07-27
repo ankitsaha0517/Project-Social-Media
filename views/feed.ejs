@@ -1,0 +1,101 @@
+<%- include("./partials/header.ejs") %>
+
+  <div class="w-full min-h-screen bg-zinc-900 text-white py-5">
+    <div class="w-full px-4 flex items-center justify-between">
+      <img class="w-1/4" src="/images/logo.png" alt="Logo">
+      <div class="icons -mt-2 flex gap-5 items-center">
+        <i class="text-[1.4rem] ri-heart-3-line"></i>
+        <i class="text-[1.4rem] ri-messenger-line"></i>
+      </div>
+    </div>
+    <div class="story px-3 flex gap-3 overflow-auto mt-5">
+      <a href="/story">
+        <div class="circle flex-shrink-0">
+          <div
+            class="gradient w-[18vw] h-[18vw] bg-sky-100 rounded-full bg-gradient-to-r from-purple-700 to-orange-500 flex items-center justify-center">
+            <div class="inner w-[92%] h-[92%] rounded-full overflow-hidden">
+              <img class="w-full h-full object-cover" src="<%= curruser.avater.url %>" alt="">
+            </div>
+          </div>
+        </div>
+      </a>
+      <!-- Static stories -->
+      <!-- <a href="/story/1">
+        <div class="circle flex-shrink-0">
+          <div
+            class="gradient w-[18vw] h-[18vw] bg-sky-100 rounded-full bg-gradient-to-r from-purple-700 to-orange-500 flex items-center justify-center">
+            <div class="inner w-[92%] h-[92%] rounded-full overflow-hidden">
+              <img class="w-full h-full object-cover" src="" alt="">
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="/story/2">
+        <div class="circle flex-shrink-0">
+          <div
+            class="gradient w-[18vw] h-[18vw] bg-sky-100 rounded-full bg-gradient-to-r from-purple-700 to-orange-500 flex items-center justify-center">
+            <div class="inner w-[92%] h-[92%] rounded-full overflow-hidden">
+              <img class="w-full h-full object-cover" src="/images/uploads/randomStory2.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </a>
+      <a href="/story/3">
+        <div class="circle flex-shrink-0">
+          <div
+            class="gradient w-[18vw] h-[18vw] bg-sky-100 rounded-full bg-gradient-to-r from-purple-700 to-orange-500 flex items-center justify-center">
+            <div class="inner w-[92%] h-[92%] rounded-full overflow-hidden">
+              <img class="w-full h-full object-cover" src="/images/uploads/randomStory3.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </a> -->
+    </div>
+    <div class="posts parent mb-20">
+      <% posts.reverse().forEach((post) => { %>
+        <div class="post mt-10 w-full min-h-[50vh]">
+          <div class="title px-4 flex items-center gap-2">
+            <div class="w-[9vw] h-[9vw] bg-sky-100 rounded-full overflow-hidden">
+              <a href="/userprofile/<%=post.owner._id%>">
+              <%if (post.owner && post.owner.avater && post.owner.avater.url) { %>
+                <img class="w-full h-full object-cover" src="<%=post.owner.avater.url %>" alt="">
+              <% }%>
+            </div>
+            <h4 class="text-sm font-semibold">
+              <%= post.owner.username %>
+            </h4>
+            </a>
+            <h6 class="text-xs opacity-30">
+              <%=post.realTimes%>
+            </h6>
+          </div>
+          <div class="relative w-full h-96 mt-4 bg-zinc-800 overflow-hidden">
+            <img class="w-full h-full object-contain" src="<%=post.img.url %>" alt="">
+          </div>
+          <div class="options w-full px-4 flex justify-between items-center text-[1.4rem]">
+            <div class="flex gap-3 mt-2">
+              <i class="heart ri-heart-3-line"></i>
+              <i class="ri-chat-3-line"></i>
+              <i class="ri-share-circle-line"></i>
+            </div>
+            <i class="save ri-bookmark-line"></i>
+          </div>
+          <h3 class="likeval px-4 mt-2 text-sm leading-none tracking-tight">
+            <%= post.likes.length %> likes
+          </h3>
+          <h2 class="text-white font-light text-sm mt-2">
+            <span class="font-semibold pl-4 pr-2">
+              <%= post.owner.username %>
+            </span>
+            <%= post.caption %>
+          </h2>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<%- include("./partials/footer.ejs") %>
