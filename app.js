@@ -9,7 +9,7 @@ const MongoStore = require('connect-mongo');
 const userRouter = require('./routers/user_router.js');
 // utis file
 const expressError = require('./utils/expressErrror.js');
-const { log } = require('console');
+
 
 
 connectDB() //mongodb CONNECT 
