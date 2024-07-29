@@ -164,7 +164,6 @@ router.get('/userprofile/unfollow/:id',isLoging,wrapAsync(async(req,res)=>{
 
 router.get('/followers/:id',isLoging,wrapAsync(async(req,res)=>{
     let user = await User.findById(req.params.id).populate("followers");
-    // console.log(user);
     res.render('followers',{footer:true,user})
 }))
 router.get('/following/:id',isLoging,wrapAsync(async(req,res)=>{
