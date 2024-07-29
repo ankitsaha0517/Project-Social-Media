@@ -5,16 +5,31 @@ const {connectDB} = require('./Db/index.js');
 const path = require('path')
 const passport = require('passport');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const userRouter = require('./routers/user_router.js');
 // utis file
-const expressError = require('./utils/expressErrror.js')
+const expressError = require('./utils/expressErrror.js');
+const { log } = require('console');
 
 
 connectDB() //mongodb CONNECT 
 
 
+const store = MongoStore.create(
+    {
+        mongoUrl: process.env.MONG_ATLS,
+        crypto:{
+            secret: 'hih35lksbvasuhkjvhawlkfgsagfuywegrfiuvcwfiohugiueycgiutcqweiuc',
+        },
+        touchAfter: 2 * 3600,
+    }
+)
+store.on('error',()=>{
+    console.log("Error in MONGO SESSION STORW",error);
+})
 const seassionOpctions ={
-    secret:"hihihiiihihih",
+    store,
+    secret:"hih35lksbvasuhkjvhawlkfgsagfuywegrfiuvcwfiohugiueycgiutcqweiuc",
     resave: false,
     saveUninitialized: false,
     cookie: { 
