@@ -9,7 +9,7 @@
       </div>
   </div>
   <h2 class="px-4 py-3 text-xl font-semibold">Following</h2>
-  <div class="followers py-2 px-6">
+  <div class="followers py-2 px-6 overflow-hidden">
     <%user.following.reverse().forEach((followUser)=>{%>
       <div class="flex justify-between items-center mt-5">
       <a href="/userprofile/<%=followUser._id%>">
@@ -24,8 +24,8 @@
         </div>   
       </a>
         <a href="#" class="px-4 py-2 bg-zinc-600 text-[0.9rem] font-semibold rounded-md">Message</a>
+      </div>
     <%})%>
-    </div>
   </div>
 
 </div>

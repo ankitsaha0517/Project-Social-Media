@@ -20,7 +20,7 @@ const userSchema = new Schema({
     avater:{
         url:{
             type: String,
-            default:'https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671122.jpg?w=740&t=st=1721184899~exp=1721185499~hmac=a805f765263516925023c5ed82ae86fd5b8f2ddad360d7c01d9a8ffe782af242'
+            default:'https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_1280.png'
         },
         filename:{
             type: String,
