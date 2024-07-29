@@ -19,7 +19,7 @@ const store = MongoStore.create(
     {
         mongoUrl: process.env.MONG_ATLS,
         crypto:{
-            secret: 'hih35lksbvasuhkjvhawlkfgsagfuywegrfiuvcwfiohugiueycgiutcqweiuc',
+            secret: process.env.SECRET_KEY,
         },
         touchAfter: 2 * 3600,
     }
@@ -29,7 +29,7 @@ store.on('error',()=>{
 })
 const seassionOpctions ={
     store,
-    secret:"hih35lksbvasuhkjvhawlkfgsagfuywegrfiuvcwfiohugiueycgiutcqweiuc",
+    secret:process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
     cookie: { 
