@@ -167,7 +167,10 @@ router.get('/followers/:id',isLoging,wrapAsync(async(req,res)=>{
     // console.log(user);
     res.render('followers',{footer:true,user})
 }))
-
+router.get('/following/:id',isLoging,wrapAsync(async(req,res)=>{
+    let user = await User.findById(req.params.id).populate("following");
+    res.render('following',{footer:true,user})
+}))
 module.exports = router
 
 

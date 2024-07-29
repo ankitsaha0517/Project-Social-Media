@@ -1,0 +1,32 @@
+<%- include("./partials/header.ejs") %>
+
+<div class="w-full min-h-screen bg-zinc-900 text-white py-5">
+  <div class="nav flex justify-between items-center px-4">
+      <h3 class="text-[1.3rem] font-semibold"><%=user.username%></h3>
+      <div class="icons flex gap-5">
+        <a href="/upload"><i class="text-[1.4rem] ri-add-box-line"></i></a>
+        <i id="menu-icon" class="text-[1.4rem] ri-menu-line cursor-pointer"></i>
+      </div>
+  </div>
+  <h2 class="px-4 py-3 text-xl font-semibold">Following</h2>
+  <div class="followers py-2 px-6">
+    <%user.following.reverse().forEach((followUser)=>{%>
+      <div class="flex justify-between items-center mt-5">
+      <a href="/userprofile/<%=followUser._id%>">
+         <div class="text-white flex items-center gap-3 ">
+          <div class="image w-[15vw] h-[15vw] rounded-full bg-sky-100 overflow-hidden">
+               <img class='w-full h-full object-cover' src="<%=followUser.avater.url%>" alt="">
+          </div>
+          <div class="text font-medium text-md">
+              <h3 class="text-[1.1rem]"><%=followUser.username%></h3>
+              <h4 class="text-[0.9rem] opacity-40 leading-none"><%=followUser.fullname%></h4>
+          </div>
+        </div>   
+      </a>
+        <a href="#" class="px-4 py-2 bg-zinc-600 text-[0.9rem] font-semibold rounded-md">Message</a>
+    <%})%>
+    </div>
+  </div>
+
+</div>
+<%- include("./partials/footer.ejs") %>
