@@ -29,4 +29,29 @@
   </div>
 
 </div>
+<div id="sidebar" class="fixed bottom-0 left-0 w-full h-[70%] bg-zinc-800 text-white transform translate-y-full transition-transform duration-500">
+  <div class="flex justify-end p-4">
+    <i id="close-icon" class="text-[1.4rem] ri-close-line cursor-pointer"></i>
+  </div>
+  <div class=" flex flex-col justify-end">
+    <!-- <h4 class="text-xl font-semibold">
+      <a class="py-2 px-4 text-center" href="/settings"><i class="ri-settings-2-line mr-2 font-normal"></i></i>Settings</a>
+    </h4> -->
+    <!-- <h4 class="text-xl font-semibold">
+      <a class="py-2 px-4 text-center" href="/save"><i class="save ri-bookmark-line mr-2 font-normal"></i>Save</a>
+    </h4> -->
+    <h4 class="text-xl font-semibold">
+      <a  class="py-2 px-4 text-center" href="/logout"><i class="ri-error-warning-line mr-2 font-normal"></i></i>Logout</a>
+    </h4>
+
+  </div>
+</div>
+<script>
+  document.getElementById('menu-icon').addEventListener('click', function() {
+    document.getElementById('sidebar').classList.remove('translate-y-full');
+  });
+  document.getElementById('close-icon').addEventListener('click', function() {
+    document.getElementById('sidebar').classList.add('translate-y-full');
+  });
+</script>
 <%- include("./partials/footer.ejs") %>
